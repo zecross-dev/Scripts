@@ -1,56 +1,63 @@
 #!/bin/bash
 
-# Fonction pour installer Visual Studio Code (si ce n'est pas déjà installé)
+# Fonction pour installer Visual Studio Code
 install_vscode() {
-    if ! command -v code &> /dev/null; then
-        echo "Visual Studio Code n'est pas installé. Installation en cours..."
-        
-        # Mise à jour des dépôts
-        sudo apt update -y
-        
-        # Installation de la clé GPG de Microsoft pour les dépôts
-        curl https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor > /usr/share/keyrings/microsoft-archive-keyring.gpg
-        
-        # Ajouter le dépôt de VSCode
-        sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft-archive-keyring.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-        
-        # Mise à jour des dépôts et installation de VSCode
-        sudo apt update -y
-        sudo apt install code -y
-    else
-        echo "Visual Studio Code est déjà installé."
-    fi
-}
+    echo "Installation de Visual Studio Code..."
 
-# Fonction pour installer les extensions nécessaires
-install_vscode_extensions() {
-    echo "Installation des extensions VSCode nécessaires..."
+    # Mise à jour des dépôts
+    sudo apt update -y
 
-    # Installation des extensions pour C++ et Makefile
-    code --install-extension ms-vscode.cpptools
-    code --install-extension ms-vscode.makefile-tools
-    # Assurez-vous d'installer également le pack de langue par défaut (en) si nécessaire
-    code --install-extension MS-CEINTL.vscode-language-pack-en
+    # Installation de la clé GPG de Microsoft pour les dépôts
+    curl https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor > /usr/share/keyrings/microsoft-archive-keyring.gpg
+
+    # Ajouter le dépôt de VSCode
+    sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft-archive-keyring.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+
+    # Mettre à jour les dépôts
+    sudo apt update -y
+
+    # Installer Visual Studio Code
+    sudo apt install code -y
+
+    echo "Visual Studio Code installé avec succès."
 }
 
 # Fonction pour installer g++ et make
-install_gpp_make() {
+install_cpp_tools() {
     echo "Installation de g++ et make..."
+
+    # Installer g++ et make
     sudo apt install g++ make -y
+
+    echo "g++ et make installés avec succès."
 }
 
-# Fonction principale pour lancer l'installation
+# Fonction pour installer les extensions VSCode nécessaires pour le développement C++
+install_vscode_extensions() {
+    echo "Installation des extensions VSCode nécessaires..."
+
+    # Installer les extensions pour C++ et Makefile
+    code --install-extension ms-vscode.cpptools
+    code --install-extension ms-vscode.makefile-tools
+    code --install-extension MS-CEINTL.vscode-language-pack-fr
+    code --install-extension MS-CEINTL.vscode-language-pack-en
+
+    echo "Les extensions VSCode ont été installées avec succès."
+}
+
+# Fonction principale pour lancer l'installation complète
 main() {
-    # Installer VSCode si nécessaire et les extensions requises
+    # Installer VSCode
     install_vscode
-    install_vscode_extensions
-    
+
     # Installer g++ et make
-    install_gpp_make
-    
-    echo "Installation terminée. Vous pouvez maintenant utiliser Visual Studio Code pour coder en C++."
+    install_cpp_tools
+
+    # Installer les extensions VSCode
+    install_vscode_extensions
+
+    echo "Installation complète terminée."
 }
 
 # Exécution du script
 main
-

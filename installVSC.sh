@@ -82,11 +82,11 @@ configure_vscode_language() {
     elif [ "$lang_choice" -eq 2 ]; then
         echo "Configuration de VSCode en anglais..."
         # Installer le pack de langue anglais pour VSCode
-        sudo -u $USER code --install-extension MS-CEINTL.vscode-language-pack-en
+        -u $USER code --install-extension MS-CEINTL.vscode-language-pack-en
     else
         echo "Choix invalide, l'anglais sera utilisé par défaut."
         # Installer le pack de langue anglais pour VSCode par défaut
-        sudo -u $USER code --install-extension MS-CEINTL.vscode-language-pack-en
+        -u $USER code --install-extension MS-CEINTL.vscode-language-pack-en
     fi
 }
 

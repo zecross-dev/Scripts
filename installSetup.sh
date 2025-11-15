@@ -133,8 +133,10 @@ main() {
 
     # Créer un raccourci .desktop si nécessaire
     create_vscode_desktop_entry
-
-    echo "Installation complète terminée ! Visual Studio Code est installé et configuré."
+    # Installation de libreOffice
+    echo "Installation de la suite LibreOffice"
+    sudo apt-get install libreoffice
+    echo "Installation complète terminée ! Visual Studio Code est installé et configuré. et la suite libreOffice est téléchargé"
 }
 
 # Exécution du script

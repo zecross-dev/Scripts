@@ -2,15 +2,15 @@
 
 # -----------------------------------------------------------------------------
 # Script: createFullStructure.sh
-# Description (EN): Create the full directory structure for services and projects.
-# Description (FR): Crée l'arborescence complète des services et des projets.
+# Description (EN): Create the full directory structure for services and projects at root.
+# Description (FR): Crée l'arborescence complète des services et projets à la racine.
 # -----------------------------------------------------------------------------
 
 # -----------------------------------------------------------------------------
 # Variables: Base directories for services and projects / Répertoires de base pour les services et projets
 # -----------------------------------------------------------------------------
-BASE_SERVICES=~/SERVICES
-BASE_PROJETS=~/PROJETS
+BASE_SERVICES="/SERVICES"
+BASE_PROJETS="/PROJETS"
 
 # -----------------------------------------------------------------------------
 # Variables: Definition of services and sub-services / Définition des services et sous-services
@@ -56,4 +56,4 @@ done
 # -----------------------------------------------------------------------------
 # Section: Completion message / Message de confirmation
 # -----------------------------------------------------------------------------
-echo "✅ Arborescence complète des services et projets créée avec succès ! / Full services and projects structure successfully created!"
+echo "✅ Arborescence complète des services et projets créée à la racine !"

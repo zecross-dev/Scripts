@@ -20,7 +20,7 @@ fi
 # -----------------------------------------------------------------------------
 # Skip header and process each line / Ignorer l’en-tête et traiter chaque ligne
 # -----------------------------------------------------------------------------
-tail -n +2 "$CSV_FILE" | while IFS=',' read -r NOM PRENOM NAISSANCE GROUPE POSTE PROJETS
+tail -n +2 "$CSV_FILE" | while IFS=',' read -r NOM PRENOM NAISSANCE GROUPE POSTE PROJETS OTHER
 do
     # Trim whitespace from fields / Nettoyage des espaces
     NOM=$(echo "$NOM" | xargs)

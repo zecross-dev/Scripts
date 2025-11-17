@@ -106,7 +106,7 @@ if [[ -n "$PROJETS" ]]; then
         if [[ -n "$P" ]]; then
             echo "➡ Assigning project: $P to $USERNAME"
             echo "➡ Attribution projet : $P à $USERNAME"
-            ./set_permissions.sh "$USERNAME" "$P"
+            sudo bash setPermissions.sh "$USERNAME" "$P"
         fi
     done
 else

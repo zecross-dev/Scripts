@@ -8,7 +8,7 @@ if [[ ! -f "$CSV_FILE" ]]; then
 fi
 
 # On saute l’en-tête
-tail -n +2 "$CSV_FILE" | while IFS=',' read -r NOM PRENOM NAISSANCE GROUPE PROJETS
+tail -n +2 "$CSV_FILE" | while IFS=',' read -r NOM PRENOM NAISSANCE GROUPE POSTE PROJETS
 do
     # Nettoyage espaces
     NOM=$(echo "$NOM" | xargs)

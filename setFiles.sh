@@ -2,13 +2,19 @@
 
 # -----------------------------------------------------------------------------
 # Script: createFullStructure.sh
-# Description: Crée l'arborescence complète des services et projets
+# Description (EN): Create the full directory structure for services and projects.
+# Description (FR): Crée l'arborescence complète des services et des projets.
 # -----------------------------------------------------------------------------
 
+# -----------------------------------------------------------------------------
+# Variables: Base directories for services and projects / Répertoires de base pour les services et projets
+# -----------------------------------------------------------------------------
 BASE_SERVICES=~/SERVICES
 BASE_PROJETS=~/PROJETS
 
-# Définition des services et sous-services
+# -----------------------------------------------------------------------------
+# Variables: Definition of services and sub-services / Définition des services et sous-services
+# -----------------------------------------------------------------------------
 declare -A SERVICES=(
     [DIRECTION]="Stratégie PMO Gouvernance"
     [RESSOURCES_HUMAINES]="Recrutement Paie Formation"
@@ -17,25 +23,37 @@ declare -A SERVICES=(
     [OPERATIONS]="Atelier Maintenance Logistique Support"
 )
 
-# Définition des projets
+# -----------------------------------------------------------------------------
+# Variables: Definition of projects / Définition des projets
+# -----------------------------------------------------------------------------
 PROJETS=("PROJET_APOLLO" "PROJET_NOVA" "PROJET_LUMEN" "PROJET_VORTEX" "PROJET_ORION")
 
-# Création des dossiers principaux
+# -----------------------------------------------------------------------------
+# Section: Create main directories / Création des dossiers principaux
+# -----------------------------------------------------------------------------
 mkdir -p "$BASE_SERVICES"
 mkdir -p "$BASE_PROJETS"
 
-# Création des services et sous-services
+# -----------------------------------------------------------------------------
+# Section: Create services and sub-services / Création des services et sous-services
+# -----------------------------------------------------------------------------
 for service in "${!SERVICES[@]}"; do
     service_path="$BASE_SERVICES/$service"
     mkdir -p "$service_path"
+    
     for subService in ${SERVICES[$service]}; do
         mkdir -p "$service_path/$subService"
     done
 done
 
-# Création des projets
+# -----------------------------------------------------------------------------
+# Section: Create projects / Création des projets
+# -----------------------------------------------------------------------------
 for projet in "${PROJETS[@]}"; do
     mkdir -p "$BASE_PROJETS/$projet"
 done
 
-echo "Arborescence complète des services et projets créée avec succès !"
+# -----------------------------------------------------------------------------
+# Section: Completion message / Message de confirmation
+# -----------------------------------------------------------------------------
+echo "✅ Arborescence complète des services et projets créée avec succès ! / Full services and projects structure successfully created!"

@@ -147,6 +147,9 @@ main() {
     echo "Installation de la suite LibreOffice..."
     sudo apt install libreoffice -y
 
+    echo "Installing Chromium..."
+    echo "Installation de chromium ..."
+    sudo apt install -y chromium-browser
     echo "✔ Installation complete! / Installation complète terminée !"
 }
 

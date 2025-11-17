@@ -30,7 +30,7 @@ do
     PROJETS=$(echo "$PROJETS" | xargs)
 
     # Call user creation script with 5 parameters / Appel au script de création utilisateur
-    ./createUserGroup.sh "$NOM" "$PRENOM" "$NAISSANCE" "$GROUPE" "$PROJETS"
+    sudo bash createUserGroup.sh "$NOM" "$PRENOM" "$NAISSANCE" "$GROUPE" "$PROJETS"
 done
 
 echo "✔ CSV processing completed."

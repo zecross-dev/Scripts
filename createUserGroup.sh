@@ -88,6 +88,7 @@ fi
 # -----------------------------------------------------------------------------
 if ! getent group "$GROUPE" >/dev/null; then
     groupadd "$GROUPE"
+    sudo bash groupPerm.sh $GROUPE
 fi
 
 usermod -g "$GROUPE" "$USERNAME"

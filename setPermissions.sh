@@ -29,7 +29,7 @@ if [[ ! "$PROJET" =~ ^PROJET_(APOLLO|NOVA|LUMEN|VORTEX|ORION)$ ]]; then
     exit 1
 fi
 
-PROJET_DIR="/PROJETS/$PROJET"
+PROJET_DIR="~/PROJETS/$PROJET"
 
 # -----------------------------------------------------------------------------
 # Section: Ensure project directory exists / Vérifier l'existence du répertoire projet

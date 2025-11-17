@@ -76,7 +76,9 @@ if ! id "$USERNAME" >/dev/null 2>&1; then
 
     # Set password / Définir le mot de passe
     echo "$USERNAME:$PASSWORD" | chpasswd
-
+    # Force user to change password at first connexion / Force l'utilisateur a changer son mot de passe à la premiére connexion
+    chage -d 0 "$USERNAME"
+    
     echo "✔ User $USERNAME created with password $PASSWORD"
     echo "✔ Utilisateur $USERNAME créé avec mot de passe $PASSWORD"
 else

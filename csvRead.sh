@@ -1,25 +1,22 @@
 #!/bin/bash
 
-if [$# -ne 1 ];
-then
-	echo "Usage : $0 fichier.csv"
-	exit 1
+CSV_FILE="tekitizy_users.csv"
+
+if [[ ! -f "$CSV_FILE" ]]; then
+    echo "❌ CSV introuvable : $CSV_FILE"
+    exit 1
 fi
 
-fichier="$1"
-
-while IFS=',' read -r prenom nom birthDay service reste;
+# On saute l’en-tête
+tail -n +2 "$CSV_FILE" | while IFS=',' read -r NOM PRENOM NAISSANCE GROUPE PROJETS
 do
-	[ -z "$prenom" ] && continue
-	[ "$prenom" = "Prénom" ] && continue
+    # Nettoyage espaces
+    NOM=$(echo "$NOM" | xargs)
+    PRENOM=$(echo "$PRENOM" | xargs)
+    NAISSANCE=$(echo "$NAISSANCE" | xargs)
+    GROUPE=$(echo "$GROUPE" | xargs)
+    PROJETS=$(echo "$PROJETS" | xargs)
 
-	groupe="${service%%:*}"
-
-	echo "Prenom : $prenom"
-	echo "nom : $nom"
-	echo "birthDay : $birthDay"
-	echo "groupe : $groupe"
-	echo "------------------"
-	bash createUserGroup.sh $prenom $nom $birthDay $groupe
-done < "$fichier"
-
+    # Appel au script de création utilisateur (5 paramètres)
+    ./createUserGroup.sh "$NOM" "$PRENOM" "$NAISSANCE" "$GROUPE" "$PROJETS"
+done
